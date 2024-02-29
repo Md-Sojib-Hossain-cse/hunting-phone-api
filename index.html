@@ -13,11 +13,25 @@
 </head>
 
 <body>
-    <header></header>
-    <main>
+    <header class="container mx-aut">
+        <h2 class="text-4xl text-center font-bold underline">Gofur's Shop</h2>
+    </header>
+    <main class="container mx-auto">
+        <section class="bg-gray-200 p-4 mt-4">
+            <!-- Search section -->
+            <input id="search-field" type="text" placeholder="Search..." class="input input-bordered w-full max-w-xs bg-gray-700 text-white" />
+            <button onclick="handleSearch()" class="btn glass bg-gray-700 text-white">Search</button>
+            <!-- Another Search field -->
+            <input id="search-field2" type="text" placeholder="Search..." class="input input-bordered w-full max-w-xs bg-gray-700 text-white" />
+            <button onclick="handleSearch2()" class="btn glass bg-sky-900 text-white">Search</button>
+        </section>
         <section>
-            <h2 class="text-xl text-center font-bold underline">Gofur's Shop</h2>
-            <div id="phoneContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+            <!-- Result Section -->
+            <div id="phoneContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+            </div>
+            <!-- Show All button -->
+            <div id="show-all-container" class="hidden text-center">
+                <button onclick="" class="btn glass bg-teal-800  text-white">Show all</button>
             </div>
         </section>
     </main>
