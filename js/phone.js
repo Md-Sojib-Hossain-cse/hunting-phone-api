@@ -1,3 +1,4 @@
+//data loading from api
 const loadData = async (searchPhone) =>{
     const response = await fetch(`https://openapi.programming-hero.com/api/phones?search=${searchPhone}`);
     const data = await response.json();
@@ -6,6 +7,8 @@ const loadData = async (searchPhone) =>{
     displayPhones(phones);
 }
 
+
+//displaying phones
 const displayPhones = phones => {
     // step 1 : where to add
     const phoneContainer =document.getElementById('phoneContainer');
@@ -18,8 +21,6 @@ const displayPhones = phones => {
     else{
         showAll.classList.add('hidden');
     }
-
-
     phones = phones.slice(0,12);
     phones.forEach(phone => {
         //step 2 : what to add
@@ -40,20 +41,39 @@ const displayPhones = phones => {
         phoneContainer.appendChild(phoneCard);
         // console.log(phone)
     });
+    //hide loadingBall
+    toggleLoadingBall(false);
 }
 
 
+//primary search
 const handleSearch = () =>{
+    //adding loadingBall
+    toggleLoadingBall(true);
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
     loadData(searchText);
     // console.log(searchText)
 }
 
+//duplicate search
 const handleSearch2 =() =>{
+    //adding loadingBall
+    toggleLoadingBall(true);
     const searchField = document.getElementById('search-field2');
     const searchText = searchField.value;
     loadData(searchText);
+}
+
+
+const toggleLoadingBall = (isLoading) => {
+    const loadingBall = document.getElementById('loadingBall');
+    if(isLoading){
+        loadingBall.classList.remove('hidden');
+    }
+    else{
+        loadingBall.classList.add('hidden');
+    }
 }
 
 // loadData();
