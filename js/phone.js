@@ -1,5 +1,5 @@
 //data loading from api
-const loadData = async (searchPhone , isShowAll) =>{
+const loadData = async (searchPhone = '13' , isShowAll) =>{
     const response = await fetch(`https://openapi.programming-hero.com/api/phones?search=${searchPhone}`);
     const data = await response.json();
     const phones = data.data;
@@ -52,7 +52,28 @@ const handleShowDetails = async (id) =>{
     // console.log(id)
     const response = await fetch(`https://openapi.programming-hero.com/api/phone/${id}`);
     const data = await response.json();
-    console.log(data.data)
+    const phone = data.data;
+    showPhoneDetails(phone)
+}
+
+//show phone Details
+const showPhoneDetails = phone =>{
+    const phoneDetailsTitle = document.getElementById('show-details-phone-name');
+    phoneDetailsTitle.innerText = phone.name;
+    const showDetailsContainer = document.getElementById('show-details-container');
+    showDetailsContainer.innerHTML = `
+    <img src="${phone.image}"></img>
+    <p><span class="font-bold">Storage :</span>${phone?.mainFeatures?.storage}</p>
+    <p><span class="font-bold">Display Size :</span>${phone?.mainFeatures?.displaySize}</p>
+    <p><span class="font-bold">Chipset :</span>${phone?.mainFeatures?.chipSet}</p>
+    <p><span class="font-bold">Memory :</span>${phone?.mainFeatures?.memory}</p>
+    <p><span class="font-bold">Slug :</span>${phone?.slug}</p>
+    <p><span class="font-bold">Release date :</span>${phone?.releaseDate}</p>
+    <p><span class="font-bold">Brand :</span>${phone?.brand}</p>
+    <p><span class="font-bold">GPS :</span>${phone?.others?.GPS}</p>
+    `
+    console.log(phone)
+    show_details_modal.showModal()
 }
 
 //primary search
@@ -91,4 +112,4 @@ const handleShowAll = () => {
     handleSearch(true);
 }
 
-// loadData();
+loadData();
