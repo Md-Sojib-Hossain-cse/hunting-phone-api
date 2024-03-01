@@ -63,14 +63,14 @@ const showPhoneDetails = phone =>{
     const showDetailsContainer = document.getElementById('show-details-container');
     showDetailsContainer.innerHTML = `
     <img src="${phone.image}"></img>
-    <p><span class="font-bold">Storage :</span>${phone?.mainFeatures?.storage}</p>
-    <p><span class="font-bold">Display Size :</span>${phone?.mainFeatures?.displaySize}</p>
-    <p><span class="font-bold">Chipset :</span>${phone?.mainFeatures?.chipSet}</p>
-    <p><span class="font-bold">Memory :</span>${phone?.mainFeatures?.memory}</p>
-    <p><span class="font-bold">Slug :</span>${phone?.slug}</p>
-    <p><span class="font-bold">Release date :</span>${phone?.releaseDate}</p>
-    <p><span class="font-bold">Brand :</span>${phone?.brand}</p>
-    <p><span class="font-bold">GPS :</span>${phone?.others?.GPS}</p>
+    <p><span class="font-bold">Storage :</span>${phone?.mainFeatures?.storage || "Storage details unavailable"}</p>
+    <p><span class="font-bold">Display Size :</span>${phone?.mainFeatures?.displaySize || "Display size not mentioned yet"}</p>
+    <p><span class="font-bold">Chipset :</span>${phone?.mainFeatures?.chipSet || "Unknown Chipset"}</p>
+    <p><span class="font-bold">Memory :</span>${phone?.mainFeatures?.memory || "Memory details not available for this device"}</p>
+    <p><span class="font-bold">Slug :</span>${phone?.slug || "Slug missing"}</p>
+    <p><span class="font-bold">Release date :</span>${phone?.releaseDate || "Release date missing"}</p>
+    <p><span class="font-bold">Brand :</span>${phone?.brand || "Brand Name Unavailable"}</p>
+    <p><span class="font-bold">GPS :</span>${phone?.others?.GPS ? phone?.others?.GPS : "No data found"}</p>
     `
     console.log(phone)
     show_details_modal.showModal()
